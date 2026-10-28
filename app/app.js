@@ -10,6 +10,8 @@ app.get("/health", (req, res) => {
     res.send("Healthy");
 });
 
-app.listen(3000, () => {
-    console.log("Application Started");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Application Started on port ${PORT}`);
 });
