@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-    res.send("Hello from Azure CI/CD Pipeline!");
+    res.send("Welcome to Azure CI/CD Pipeline!");
 });
 
 app.get("/health", (req, res) => {
