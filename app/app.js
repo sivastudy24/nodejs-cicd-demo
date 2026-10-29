@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
   <!DOCTYPE html>
   <html>
   <head>
-    <title>BlueGen Procurement Portal</title>
+    <title>BlueGene Procurement Portal</title>
     <style>
       body{
         margin:0;
@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
   <body>
 
     <div class="header">
-      🚀 BlueGen Technologies Procurement Portal
+      🚀 BlueGene Systems Procurement Portal
     </div>
 
     <div class="container">
