@@ -1,74 +1,118 @@
-const express = require("express");
-
-const app = express();
-
-const PORT = process.env.PORT || 3000;
-
 app.get("/", (req, res) => {
   res.send(`
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <title>BlueGene Procurement Portal</title>
-    <style>
-      body{
-        margin:0;
-        font-family:Segoe UI, Arial;
-        background:linear-gradient(135deg,#0d47a1,#1976d2,#42a5f5);
-        color:white;
-      }
+<!DOCTYPE html>
+<html>
+<head>
+<title>BlueGene Systems - USD to INR Converter</title>
 
-      .header{
-        background:#002171;
-        padding:20px;
-        text-align:center;
-        font-size:32px;
-        font-weight:bold;
-      }
+<style>
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    margin:0;
+    background:linear-gradient(135deg,#0d47a1,#2196f3,#64b5f6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
 
-      .container{
-        padding:30px;
-        text-align:center;
-      }
+.container{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    width:450px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
 
-      .card{
-        background:white;
-        color:black;
-        padding:20px;
-        border-radius:12px;
-        width:300px;
-        margin:auto;
-      }
-    </style>
-  </head>
+h1{
+    color:#0d47a1;
+}
 
-  <body>
+input{
+    width:80%;
+    padding:12px;
+    margin:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:18px;
+}
 
-    <div class="header">
-      🚀 BlueGene Systems Procurement Portal
-    </div>
+button{
+    background:#1976d2;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
 
-    <div class="container">
-      <div class="card">
-        <h2>Total Requests</h2>
-        <h1>128</h1>
+button:hover{
+    background:#0d47a1;
+}
 
-        <h2>Approved</h2>
-        <h1>94</h1>
+#result{
+    margin-top:20px;
+    font-size:24px;
+    font-weight:bold;
+    color:green;
+}
 
-        <h2>Pending</h2>
-        <h1>34</h1>
+.footer{
+    margin-top:20px;
+    color:#555;
+}
+</style>
+</head>
 
-        <h2>Budget</h2>
-        <h1>$85K</h1>
-      </div>
-    </div>
+<body>
 
-  </body>
-  </html>
+<div class="container">
+
+<h1>💱 USD to INR Converter</h1>
+
+<h3>BlueGene Systems Finance Portal</h3>
+
+<input
+  type="number"
+  id="usd"
+  placeholder="Enter USD Amount"
+/>
+
+<br>
+
+<button onclick="convertCurrency()">
+Convert
+</button>
+
+<div id="result"></div>
+
+<div class="footer">
+Using Sample Rate: 1 USD = ₹85
+</div>
+
+</div>
+
+<script>
+
+function convertCurrency(){
+
+    const usd =
+      parseFloat(document.getElementById("usd").value);
+
+    const rate = 85;
+
+    const inr = usd * rate;
+
+    document.getElementById("result").innerHTML =
+      usd + " USD = ₹ " + inr.toFixed(2);
+
+}
+
+</script>
+
+</body>
+</html>
   `);
-});
-
-app.listen(PORT, () => {
-  console.log(`Application Started on port ${PORT}`);
 });
