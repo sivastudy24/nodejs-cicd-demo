@@ -1,3 +1,9 @@
+const express = require("express");
+
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
 app.get("/", (req, res) => {
   res.send(`
 <!DOCTYPE html>
@@ -58,11 +64,6 @@ button:hover{
     font-weight:bold;
     color:green;
 }
-
-.footer{
-    margin-top:20px;
-    color:#555;
-}
 </style>
 </head>
 
@@ -80,7 +81,7 @@ button:hover{
   placeholder="Enter USD Amount"
 />
 
-<br>
+<br><br>
 
 <button onclick="convertCurrency()">
 Convert
@@ -88,31 +89,30 @@ Convert
 
 <div id="result"></div>
 
-<div class="footer">
-Using Sample Rate: 1 USD = ₹85
-</div>
+<p>Exchange Rate Used: 1 USD = ₹85</p>
 
 </div>
 
 <script>
-
 function convertCurrency(){
 
-    const usd =
+  const usd =
       parseFloat(document.getElementById("usd").value);
 
-    const rate = 85;
+  const rate = 85;
 
-    const inr = usd * rate;
+  const inr = usd * rate;
 
-    document.getElementById("result").innerHTML =
+  document.getElementById("result").innerHTML =
       usd + " USD = ₹ " + inr.toFixed(2);
-
 }
-
 </script>
 
 </body>
 </html>
   `);
+});
+
+app.listen(PORT, () => {
+  console.log(\`Application Started on port \${PORT}\`);
 });
